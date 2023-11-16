@@ -58,4 +58,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+        public function canAccessPanel(Panel $panel): bool
+    {
+        return str_ends_with($this->email, 'anocoo@anocoo.com') && $this->hasVerifiedEmail();
+    }
 }
